@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import { useState } from 'react'
 import Cat from "./data/cat"
