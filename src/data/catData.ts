@@ -1,7 +1,7 @@
 import Cat from './cat';
+import { v4 as uuidv4 } from 'uuid';
 
-const catData = <Array<Cat>> 
-    [
+const catData : Array<Cat> = [
         {
             name: 'Little Miss Purrfect',
             species: 'Cat',
@@ -81,5 +81,6 @@ const catData = <Array<Cat>>
             birthYear: 2016,
         }
 ];
-
+catData.forEach(cat => cat.id = uuidv4());
+console.log(catData); // each cat should now have a unique ID
 export default catData;

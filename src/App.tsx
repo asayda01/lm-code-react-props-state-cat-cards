@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import { useState } from 'react'
 import Cat from "./data/cat"
@@ -24,6 +23,7 @@ function App(): JSX.Element {
 			<main>
 				<div className='cards__wrapper'>{cats.map((cat, index) => (
 						<CatCard
+							key={cat.id}
 							name={cat.name}
 							species={cat.species}
 							favFoods={cat.favFoods}
