@@ -1,26 +1,37 @@
 import './App.css';
 import { useState } from 'react'
-import Cat from "./data/cat"
-import catData from "./data/catData"
-import CatCard from './components/cat_card';
 import Navbar from './components/navbar';
 import Header from './components/header';
 import Footer from './components/footer';
 
+import Cat from "./data/cat"
+import catData from "./data/catData"
+import CatCard from './components/cat_card';
+
+import Dog from "./data/dog"
+import dogData from "./data/dogData"
+import DogCard from './components/dog_card';
+
+
+
 function App(): JSX.Element {
 	
 	const [ cats, setCats ] = useState<Array<Cat>>(catData);
+	const [ dogs, setDogs ] = useState<Array<Dog>>(dogData);
 	//console.log("Our pretties 😻: ", cats);
 	const catCount = cats.length;
+	const dogCount = dogs.length;
+
 	//console.log(catCount);
 
 	return (
 		<>
 			<Navbar />
 
-			<Header catCount={catCount}></Header>
+			<Header catCount={catCount} dogCount ={dogCount}></Header>
 
 			<main>
+
 				<div className='cards__wrapper'>{cats.map((cat, index) => (
 						<CatCard
 							key={cat.id}
@@ -32,6 +43,19 @@ function App(): JSX.Element {
 						/>
 					))}
 				</div>
+
+				<div className='cards__wrapper'>{dogs.map((dog, index) => (
+						<DogCard
+							key={dog.id}
+							name={dog.name}
+							species={dog.species}
+							favFoods={dog.favFoods}
+							birthYear={dog.birthYear}
+							dogIndex={index}
+						/>
+					))}
+				</div>
+
 			</main>
 
 			<Footer />
