@@ -12,6 +12,8 @@ import Dog from "./data/dog"
 import dogData from "./data/dogData"
 import DogCard from './components/dog_card';
 
+import CatForm from './components/add_cat';
+import DogForm from './components/add_dog';
 
 
 function App(): JSX.Element {
@@ -23,6 +25,22 @@ function App(): JSX.Element {
 	const dogCount = dogs.length;
 
 	//console.log(catCount);
+
+	const updateCats = (name:string,species:string, favFoods:string[],birthYear:number) => {
+		setCats([...cats, {name: name,
+			species: species,
+			favFoods: favFoods,
+			birthYear: birthYear
+		}]);
+	};
+
+	const updateDogs = (name:string,species:string, favFoods:string[],birthYear:number) => {
+			setDogs([...dogs, {name: name,
+				species: species,
+				favFoods: favFoods,
+				birthYear: birthYear
+		}]);
+	};
 
 	return (
 		<>
@@ -54,6 +72,12 @@ function App(): JSX.Element {
 							dogIndex={index}
 						/>
 					))}
+				</div>
+
+				<div className="side-by-side"> 
+
+				<CatForm updateCats={updateCats} />
+				<DogForm updateDogs={updateDogs} />
 				</div>
 
 			</main>
